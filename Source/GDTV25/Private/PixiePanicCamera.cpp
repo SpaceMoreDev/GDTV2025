@@ -50,7 +50,6 @@ void APixiePanicCamera::Tick(float DeltaTime)
 		|| FollowTarget->GetActorLocation().Y < GetActorLocation().Y - HorizontalThreshold )
 	{
 		TargetY = FollowTarget->GetActorLocation().Y;
-		UE_LOG(LogTemp, Warning, TEXT("Moving Y"));
 	}
 	
 	NewY = FMath::FInterpTo(GetActorLocation().Y,TargetY,DeltaTime,MovementSpeed);

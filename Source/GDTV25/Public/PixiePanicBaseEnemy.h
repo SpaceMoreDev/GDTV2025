@@ -3,11 +3,13 @@
 #pragma once
 
 #include "CoreMinimal.h"
-#include "GameFramework/Pawn.h"
+#include "GameFramework/Character.h"
 #include "PixiePanicBaseEnemy.generated.h"
 
+class UCapsuleComponent;
+class AAIController;
 UCLASS()
-class GDTV25_API APixiePanicBaseEnemy : public APawn
+class GDTV25_API APixiePanicBaseEnemy : public ACharacter
 {
 	GENERATED_BODY()
 
@@ -18,12 +20,13 @@ public:
 protected:
 	// Called when the game starts or when spawned
 	virtual void BeginPlay() override;
-
+	void SetTarget(AActor* NewTarget);
+	AAIController* CurrentController;
 public:	
-	// Called every frame
+
 	virtual void Tick(float DeltaTime) override;
-
-	// Called to bind functionality to input
-	virtual void SetupPlayerInputComponent(class UInputComponent* PlayerInputComponent) override;
-
+	
+	UPROPERTY(EditAnywhere, Category="AI")
+	float AcceptanceRadius = 100.f;
+	AActor* Target = nullptr;
 };
