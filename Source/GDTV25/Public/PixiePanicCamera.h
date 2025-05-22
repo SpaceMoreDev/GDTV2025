@@ -6,7 +6,7 @@
 #include "GameFramework/Pawn.h"
 #include "PixiePanicCamera.generated.h"
 
-class APlayerCharacter;
+class APixiePanicPlayerCharacter;
 class UCameraComponent;
 
 UCLASS()

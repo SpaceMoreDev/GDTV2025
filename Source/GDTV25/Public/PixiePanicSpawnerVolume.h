@@ -24,6 +24,9 @@ protected:
 	TSubclassOf<AActor> ActorToSpawn;
 
 	UPROPERTY(EditAnywhere, Category = "Spawning")
+	bool bShowDebug = false;
+	
+	UPROPERTY(EditAnywhere, Category = "Spawning")
 	float SpawnRadius = 900.f;
 
 	UPROPERTY(EditAnywhere, Category = "Spawning")

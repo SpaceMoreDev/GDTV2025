@@ -19,9 +19,12 @@ void APixiePanicSpawnerVolume::BeginPlay()
 
 	// UpdateVolumeSize();
 	GetWorldTimerManager().SetTimer(SpawnTimerHandle, this, &APixiePanicSpawnerVolume::SpawnActorInCircle, SpawnInterval, true);
-	DrawDebugCircle(GetWorld(),Center,SpawnRadius,128,FColor::Red,true,-1,0,5,
-		FVector(0,1,0),
-		FVector(1,0,0));
+	if (bShowDebug)
+	{
+		DrawDebugCircle(GetWorld(),Center,SpawnRadius,128,FColor::Red,true,-1,0,5,
+			FVector(0,1,0),
+			FVector(1,0,0));
+	}
 }
 
 void APixiePanicSpawnerVolume::SpawnActorInCircle()
