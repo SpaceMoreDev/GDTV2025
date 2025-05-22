@@ -31,18 +31,26 @@ protected:
 	UPROPERTY(EditAnywhere, Category="Follow Options")
 	float MovementSpeed = 0.5f;
 	
-	UPROPERTY(EditAnywhere, Category="Follow Options")
-	float HorizontalThreshold = 500.0f;
 
 	
+
 	UPROPERTY(EditAnywhere, Category="Follow Options")
 	APawn* FollowTarget;
 	
 	UPROPERTY(EditDefaultsOnly)
 	UCameraComponent* CameraComp;
 	float TargetY = 0;
-public:
+	float TargetX = 0;
+	
 
+public:
+	
+	UPROPERTY(EditAnywhere, Category="Follow Options")
+	float ForwardThreshold = 1500.0;
+	
+	UPROPERTY(EditAnywhere, Category="Follow Options")
+	float HorizontalThreshold = 500.0f;
+	
 	void SetTarget(APawn* Target);
 	// Called every frame
 	virtual void Tick(float DeltaTime) override;

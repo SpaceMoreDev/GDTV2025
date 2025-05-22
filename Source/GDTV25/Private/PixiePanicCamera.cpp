@@ -46,16 +46,25 @@ void APixiePanicCamera::Tick(float DeltaTime)
 	CameraContainer->SetWorldRotation(NewRotation);
 	
 	float NewY;
+	float NewX;
 	if (FollowTarget->GetActorLocation().Y > GetActorLocation().Y + HorizontalThreshold
 		|| FollowTarget->GetActorLocation().Y < GetActorLocation().Y - HorizontalThreshold )
 	{
 		TargetY = FollowTarget->GetActorLocation().Y;
 	}
+
+	if (FollowTarget->GetActorLocation().X > GetActorLocation().X + ForwardThreshold
+	|| FollowTarget->GetActorLocation().X < GetActorLocation().X - ForwardThreshold )
+	{
+		TargetX = FollowTarget->GetActorLocation().X + ForwardThreshold;
+	}
 	
 	NewY = FMath::FInterpTo(GetActorLocation().Y,TargetY,DeltaTime,MovementSpeed);
-
+	NewX = FMath::FInterpTo(GetActorLocation().X,TargetX,DeltaTime,MovementSpeed*2);
+	
 	FVector NewLocation = GetActorLocation();
 	NewLocation.Y = NewY;
+	NewLocation.X = NewX;
 	
 	SetActorLocation(NewLocation);
 }

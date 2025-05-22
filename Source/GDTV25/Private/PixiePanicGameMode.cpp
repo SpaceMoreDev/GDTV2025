@@ -25,6 +25,9 @@ void APixiePanicGameMode::BeginPlay()
 		
 		if (SpawnedCamera)
 		{
+			SpawnedCamera->ForwardThreshold = (CameraLocation.X);
+
+			
 			SpawnedCamera->SetTarget(PlayerTarget);
 			SpawnedCamera->SetActorTickEnabled(true);
 			PlayerController->SetViewTarget(SpawnedCamera);
