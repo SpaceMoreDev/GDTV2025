@@ -23,7 +23,7 @@ protected:
 	UPROPERTY(EditAnywhere, Category = "Spawning")
 	TSubclassOf<AActor> ActorToSpawn;
 
-	UPROPERTY(EditAnywhere, Category = "Spawning")
+	UPROPERTY(EditAnywhere, Category = "Debug")
 	bool bShowDebug = false;
 	
 	UPROPERTY(EditAnywhere, Category = "Spawning")

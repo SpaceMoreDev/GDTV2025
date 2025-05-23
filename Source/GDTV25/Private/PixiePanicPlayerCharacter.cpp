@@ -3,6 +3,7 @@
 
 #include "GDTV25/Public/PixiePanicPlayerCharacter.h"
 
+#include "PixiePanicPickables.h"
 #include "GameFramework/CharacterMovementComponent.h"
 
 
@@ -38,7 +39,22 @@ void APixiePanicPlayerCharacter::SetupPlayerInputComponent(UInputComponent* Play
 	PlayerInputComponent->BindAxis(TEXT("MoveForward"), this, &APixiePanicPlayerCharacter::MoveForward);
 	PlayerInputComponent->BindAxis(TEXT("MoveRight"), this, &APixiePanicPlayerCharacter::MoveRight);
 	
-	PlayerInputComponent->BindAction(TEXT("Jump"), EInputEvent::IE_Pressed, this, &ACharacter::Jump);
+	PlayerInputComponent->BindAction(TEXT("Jump"), EInputEvent::IE_Pressed, this, &APixiePanicPlayerCharacter::Throw);
+}
+
+void APixiePanicPlayerCharacter::PickUP(APixiePanicPickables* Pickable)
+{
+	CurrentPickable = Pickable;
+	bIsPickingUp = true;
+}
+
+void APixiePanicPlayerCharacter::Throw()
+{
+	if (CurrentPickable)
+	{
+		bIsPickingUp = false;
+		CurrentPickable->Throw();
+	}
 }
 
 void APixiePanicPlayerCharacter::MoveForward(float axisValue)
@@ -55,7 +71,7 @@ void APixiePanicPlayerCharacter::MoveRight(float axisValue)
 
 void APixiePanicPlayerCharacter::PlayerRotation(float DeltaTime)
 {
-	FVector Velocity = GetMovementComponent()->Velocity;
+	FVector Velocity = LastMovementInput;
 	Velocity.Z = 0.f;
 
 	if (!Velocity.IsNearlyZero())

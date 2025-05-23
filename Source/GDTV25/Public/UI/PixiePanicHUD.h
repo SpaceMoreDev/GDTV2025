@@ -17,7 +17,7 @@ class GDTV25_API APixiePanicHUD : public AHUD
 
 protected:
 	virtual void BeginPlay() override;
-	void DrawHUD();
+	void SpawnPlayerHUD();
 public:
 	UPROPERTY(EditDefaultsOnly,BlueprintReadOnly,Category="UI")
 	TSubclassOf<UPixiePanicPlayerUI> DefaultPlayerUI;

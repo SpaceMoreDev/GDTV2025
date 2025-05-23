@@ -29,7 +29,7 @@ protected:
 	UPROPERTY(EditAnywhere, Category="Follow Options")
 	float RotationSpeed = 2.0f;
 	UPROPERTY(EditAnywhere, Category="Follow Options")
-	float MovementSpeed = 0.5f;
+	float MovementSpeed = 1.5f;
 	
 
 	

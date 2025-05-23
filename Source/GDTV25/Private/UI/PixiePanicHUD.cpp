@@ -8,12 +8,13 @@
 void APixiePanicHUD::BeginPlay()
 {
 	Super::BeginPlay();
-	DrawHUD();
+	SpawnPlayerHUD();
 }
 
-void APixiePanicHUD::DrawHUD()
+void APixiePanicHUD::SpawnPlayerHUD()
 {
 	UPixiePanicPlayerUI* PlayerUI = Cast<UPixiePanicPlayerUI>(CreateWidget(GetWorld(), DefaultPlayerUI));
 	PlayerUI->AddToViewport(0);
 	CurrentUIInstance = PlayerUI;
+	UE_LOG(LogTemp, Warning, TEXT("Drew HUD"));
 }
