@@ -6,6 +6,17 @@
 #include "GameFramework/Actor.h"
 #include "PixiePanicPickables.generated.h"
 
+
+UENUM()
+enum class EPickableType
+{
+	Fish      UMETA(DisplayName = "Fish"),
+	Sandwich  UMETA(DisplayName = "Sandwich"),
+	Cheese	  UMETA(DisplayName = "Cheese"),
+	MAX       UMETA(Hidden)
+	
+};
+
 class USphereComponent;
 class APixiePanicPlayerCharacter;
 UCLASS()
@@ -47,4 +58,7 @@ public:
 	UMeshComponent* MeshComp;
 	UPROPERTY(EditAnywhere)
 	USphereComponent* SphereComp;
+	
+	UPROPERTY(EditAnywhere)
+	EPickableType PickableType = EPickableType::Fish;
 };

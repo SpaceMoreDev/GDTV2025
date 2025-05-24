@@ -4,8 +4,10 @@
 
 #include "CoreMinimal.h"
 #include "GameFramework/Actor.h"
+#include "PixiePanicPickables.h"
 #include "PixiePanicCustomer.generated.h"
 
+class UWidgetComponent;
 class USphereComponent;
 
 UCLASS()
@@ -26,8 +28,14 @@ public:
 	virtual void Tick(float DeltaTime) override;
 
 	UPROPERTY(EditDefaultsOnly)
-	USkeletalMeshComponent* SkeletalMesh;
+	USkeletalMeshComponent *SkeletalMesh;
 	UPROPERTY(EditDefaultsOnly)
 	USphereComponent* Collision;
+	UPROPERTY(EditDefaultsOnly)
+	UWidgetComponent* Widget;
+
+	EPickableType NeedType;
+
+	class APixiePanicPlayerCharacter* Player;
 	
 };
